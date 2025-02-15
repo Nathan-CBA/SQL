@@ -1,0 +1,138 @@
+-- DROP TABLE IF EXISTS employe;
+
+
+
+-- CREATE TABLE employe (
+-- 	nas					INT				NOT NULL,
+-- 	nom					VARCHAR(32) 	NOT NULL,
+-- 	prenom				VARCHAR(32) 	NOT NULL,
+-- 	genre				CHAR			NOT NULL,
+-- 	date_embauche		DATE			NOT NULL,
+-- 	salaire				NUMERIC(5, 2)	NOT NULL,		-- money est disponible avec PostgreSQL
+-- 	departement			VARCHAR(16)		NULL,
+-- 	ville				VARCHAR(64)		NOT NULL,
+-- 	superviseur			INT				NULL,
+-- 	commission			NUMERIC(5)		NULL
+-- );
+
+
+
+-- INSERT INTO employe 
+-- 	VALUES	(111, 'Dupuis', 'Lancelot', 'h', '2000-01-28', '55.00', NULL, 'Montréal', NULL, 1500),
+-- 			(222, 'Bordeleau', 'Marina', 'f', '2000-05-12', '25.00', 'ventes', 'Montréal', 111, 2500),
+-- 			(333, 'Fontaine', 'Bella', 'f', '2000-05-12', '25.00', 'ventes', 'Montréal', 222, 0),
+-- 			(444, 'Lebel', 'Bob', 'h', '2000-09-13', '15.00', 'achats', 'Laval', 111, NULL),
+-- 			(555, 'Tangay', 'Gäétan', 'h', '2001-01-01', '30.50', 'r&d', 'Longueuil', 111, NULL),
+-- 			(666, 'Brochant', 'Pierre', 'h', '2001-12-25', '25.50', 'achats', 'Montréal', 222, NULL),
+-- 			(777, 'Brochant', 'Christine', 'f', '2002-02-14', '20.00', 'ventes', 'Montréal', 222, 3000),
+-- 			(888, 'Pignon', 'François', 'h', '2002-07-07', '13.13', 'r&d', 'Laval', 555, NULL),
+-- 			(999, 'Leblanc', 'Juste', 'h', '2002-07-08', '30.00', 'r&d', 'Montréal', 555, NULL),
+-- 			(123, 'Sasseur', 'Marlène', 'f', '2002-07-08', '15.00', 'administration', 'Longueuil', 111, NULL),
+-- 			(234, 'Bourassa', 'Alex', 'x', '2002-02-05', '19.00', 'achats', 'Longueuil', 222, NULL);
+
+-- Exercice 6.
+
+-- SELECT nom,
+-- 32.0 * salaire + COALESCE(commission, 0) "Salaire total"
+-- FROM employe ; 
+
+-- SELECT nom,
+-- 32.0 * salaire + COALESCE(commission, 0) "Salaire total"
+-- FROM employe order by nom; -- trie en ordre alphabetique 
+
+-- SELECT nom,
+-- 32.0 * salaire + COALESCE(commission, 0) "Salaire total"
+-- FROM employe order by nom limit 3 offset 2; -- trie en ordre alphabetique sort les trois meilleurs et fait un bonds de deux 
+
+
+-- SELECT  nom,
+--  CASE
+--  	WHEN genre = 'f' THEN 'Femme'
+--  	WHEN genre = 'h' THEN 'Homme'
+--  	WHEN genre = 'x' THEN 'Non binaire'
+--  	ELSE 'Genre inconnu'
+--  END AS Genre
+-- FROM employe;
+
+
+-- SELECT nom, prenom
+-- FROM employe
+-- WHERE departement = (SELECT departement
+-- FROM employe
+-- WHERE nom = 'Dupuis'); -- select les employés qui ont le meme depatement que Dupuis
+
+ 
+-- pour unir UNION il faut que les deux Selects soient du meme type 
+
+-- select nom, prenom, commission from employe where commission is null
+
+-- select nom, prenom, commission from employe where commission < 500
+
+-- select nom, prenom, salaire * 32.0 + coalesce(commission, 0) as RevenusTotaux from employe where salaire * 32.0 + coalesce(commission, 0) > 2000
+
+-- select nom, prenom from employe where superviseur is null
+
+
+-- select nom, prenom, ville from employe 
+
+-- exercice 7.
+
+-- select nom, prenom
+-- from employe
+-- where superviseur = (select nas from employe where nom = 'Dupuis')
+
+-- select nom,prenom 
+-- from employe 
+-- where departement = 
+-- 	(select id 
+-- 	 from departement 
+-- 	 where superviseur 
+-- 		=(select nas 
+-- 		  from employe 
+-- 		  where nom ='Sasseur'))
+
+-- select nom, prenom
+-- from employe
+-- where salaire >
+-- (select avg(salaire) from employe)
+
+-- select nom,prenom from employe where departement in((select id 
+-- from departement 
+-- where superviseur in 
+-- (select nas from employe where commission > 2000))
+-- )
+
+-- select nom, prenom from employe where departement in (select nom from departement where ville in ('Montreal','Longueuil'))
+
+-- select nom,prenom 
+-- from employe 
+-- where departement 
+-- in (select id from departement where nom != 'Ventes' )
+
+-- select nom, prenom
+-- from employe 
+-- where departement in
+-- (select id from departement where nom in ('Ventes', 'Achats'))
+
+-- select nom, prenom, ville 
+-- from employe 
+-- where departement in
+-- (select id from departement where ville = 'Montréal')
+-- order by ville
+
+-- select nom, ville from departement where ville like '%o%'
+
+-- select nom, prenom from employe where prenom like '__r%'
+
+-- select nom from departement where superviseur = 111
+
+select date_embauche, nom, prenom from employe where 
+prenom like '%e%' and  to_char(to_date( date_embauche , 'YYYY-MM-DD'), 'Month') = 'July'
+
+
+
+
+
+
+
+

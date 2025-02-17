@@ -64,18 +64,27 @@
  
 -- pour unir UNION il faut que les deux Selects soient du meme type 
 
--- select nom, prenom, commission from employe where commission is null
+-- select nom, prenom from employe where commission is null 
 
--- select nom, prenom, commission from employe where commission < 500
+-- select nom, prenom from employe where commission is not null 
+-- 
+-- select nom, prenom from employe where commission < 2000.0
 
--- select nom, prenom, salaire * 32.0 + coalesce(commission, 0) as RevenusTotaux from employe where salaire * 32.0 + coalesce(commission, 0) > 2000
+-- select nom, prenom, COALESCE(commission, 0.0) from employe  where COALESCE(commission, 0.0) < 2000.0
+
+-- select nom, prenom, (salaire + commission) * 32.00 as "RevenuTotaux" from employe
+-- where (salaire + commission) * 32.00 > 2000.00
 
 -- select nom, prenom from employe where superviseur is null
 
+-- select nom, prenom, Coalesce(superviseur, 0.0) from employe 
 
--- select nom, prenom, ville from employe 
 
--- exercice 7.
+-- SELECT nom, prenom, NULLIF(ville, 'Laval')
+
+
+
+--     FROM employe;-- exercice 7.
 
 -- select nom, prenom
 -- from employe
@@ -102,32 +111,78 @@
 -- (select nas from employe where commission > 2000))
 -- )
 
--- select nom, prenom from employe where departement in (select nom from departement where ville in ('Montreal','Longueuil'))
+--
+-- select nom, prenom from employe where superviseur = 
+-- (select nas from employe where nom = 'Dupuis')
 
--- select nom,prenom 
--- from employe 
--- where departement 
--- in (select id from departement where nom != 'Ventes' )
+-- select nom, prenom from employe where departement in
+-- (select id from departement where ville in ('Montréal', 'Longueuil'))
 
--- select nom, prenom
--- from employe 
--- where departement in
--- (select id from departement where nom in ('Ventes', 'Achats'))
+-- select nom, prenom from employe where departement in
+-- (select id from departement where nom not in  ('Ventes')) -- where nom != 'Ventes')
 
--- select nom, prenom, ville 
--- from employe 
--- where departement in
+-- select nom, prenom from employe where departement in
+-- (select id from departement where nom = 'Ventes' or nom = 'Achats' ) --nom in ('Ventes', 'Achats'))
+
+-- select nom, prenom from employe where departement in
 -- (select id from departement where ville = 'Montréal')
--- order by ville
 
--- select nom, ville from departement where ville like '%o%'
+-- select nom, prenom, ville from employe where ville ilike '%o%'
 
--- select nom, prenom from employe where prenom like '__r%'
+-- select nom, prenom, nas from employe where prenom like '__r%'
 
 -- select nom from departement where superviseur = 111
 
-select date_embauche, nom, prenom from employe where 
-prenom like '%e%' and  to_char(to_date( date_embauche , 'YYYY-MM-DD'), 'Month') = 'July'
+-- SELECT 
+--     nom, 
+--     prenom, 
+--     TO_CHAR(date_embauche, 'DD-MM-YY') AS date_embauche
+-- FROM employe
+-- WHERE 
+--     EXTRACT(MONTH FROM date_embauche) = 7  
+--     AND prenom ILIKE '%e%' 
+-- ORDER BY 
+--     date_embauche, 
+--     nom, 
+--     prenom;
+
+
+-- select nom, prenom, salaire * 32.0 as Salaire_Hebdomadaire, commission 
+-- from employe where commission is not null and salaire * 32.0 > commission 
+-- ORDER BY salaire_hebdomadaire DESC, nom ASC, prenom ASC
+
+-- select nom, prenom from employe where commission is not null and  EXTRACT(year FROM date_embauche) = 2000
+
+-- select nom, prenom, TO_CHAR(date_embauche, 'DD-MM-YY') AS date_embauche, commission, salaire
+-- from employe 
+-- where 2 * (salaire * 32.0) > commission / 2
+-- and commission is not null 
+-- and departement = (select id from departement where nom = 'Ventes')
+-- and date_embauche between '2000-4-1' and '2002-4-1'
+-- ORDER BY date_embauche DESC
+
+-- select nom, prenom, TO_CHAR(date_embauche, 'DD-MM-YYYY') AS date_embauche, commission, salaire, departement 
+-- from employe 
+-- where superviseur =(select nas from employe where nom = 'Dupuis')
+-- ORDER BY date_embauche DESC
+
+-- select nom, prenom, coalesce(commission, 0.0) + (salaire * 32.0) as Revenu_Totaux, 
+-- DATEPART(month, CURRENT_DATE()) AS jours_ecoules
+-- from employe
+-- where date_embauche between '2000-4-2' and '2002-3-30'
+
+-- select nom, prenom from employe 
+-- where departement in 
+-- (select id from departement 
+-- 	where ville in ('Montréal', 'Laval') and superviseur is null or superviseur not in
+-- 		(select nas from employe where nom in('Dupuis', 'Bordeleau')) )
+
+-- select 	nom ||''|| prenom as employe ,coalesce(commission,0.0)+ salaire * 32.0 as "gain total ($)"from employe
+
+-- select nom, prenom, ((salaire * 32) * 52) + (coalesce(commission,0.0) * 12) as "salaire annuel" 
+-- from employe
+-- order by "salaire annuel" desc
+-- Limit 3
 
 
 

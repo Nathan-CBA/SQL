@@ -177,7 +177,8 @@
 -- 	where ville in ('Montréal', 'Laval') and superviseur is null or superviseur not in
 -- 		(select nas from employe where nom in('Dupuis', 'Bordeleau')) )
 
--- select 	nom ||''|| prenom as employe ,coalesce(commission,0.0)+ salaire * 32.0 as "gain total ($)"from employe
+select 	nom ||''|| prenom as employe, 'gagne' as "a un" , coalesce(commission,0.0)+ salaire * 32.0 as "gain total ($)"from employe
+
 
 -- select nom, prenom, ((salaire * 32) * 52) + (coalesce(commission,0.0) * 12) as "salaire annuel" 
 -- from employe

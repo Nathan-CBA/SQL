@@ -1,0 +1,62 @@
+
+
+
+-- );
+
+-- Create Table pays(
+-- 	id			Numeric(3),
+-- 	nom			Varchar(64) 		Not Null
+	
+-- 	CONSTRAINT pays PRIMARY KEY (id)
+-- )
+
+-- Create Table employe (
+-- 	nas 				Integer, 
+-- 	nom					Varchar(64) 	Not Null,
+-- 	prenom				Varchar(64) 	Not Null,
+-- 	date_embauche		Date			Not Null, 
+-- 	date_naissance		Date,
+-- 	genre				Char			Not Null, 
+-- 	courriel_entreprise	Varchar(64) 	Not Null,
+-- 	courriel_presonnel	Varchar(128) 	Not Null,
+-- 	salaire_horaire 	Numeric(5,2)	Not Null,
+-- 	superviseur			Int
+
+	
+-- 	CONSTRAINT employe PRIMARY KEY (nas),
+-- 	Constraint employe CHECK( nas BETWEEN 100000000 AND 999999999),
+-- 	Constraint employe CHECK( salaire_horaire >= 20.00),
+-- 	Constraint employe CHECK( genre in ('f', 'h', 'x')),
+	
+-- )
+
+-- ALTER TABLE employe ADD CONSTRAINT fk_emp_sup FOREIGN KEY (superviseur) REFERENCES employe(nas)
+
+Create Table etudiant(
+	id				Numeric(4)		Not Null,
+	nom				Varchar(64) 	Not Null,
+	prenom			Varchar(64) 	Not Null,
+	code_perm		Char(12)		Not Null UNIQUE,
+	courriel		Varchar(64) 	UNIQUE,
+	programme 	 	Varchar		NOT Null,
+	date_inscr		Date
+	
+	CONSTRAINT etudiant PRIMARY KEY (id)
+)
+
+Create Table programme(
+	id			Numeric(2),
+	nom			Varchar(64) NOT Null UNIQUE,
+	sigle		Char(3)		NOT null UNIQUE,
+	departement	Varchar		NOT Null
+	
+	CONSTRAINT etudiant PRIMARY KEY (id)
+	
+)
+	
+
+	
+
+
+
+

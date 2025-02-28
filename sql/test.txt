@@ -1,0 +1,69 @@
+
+--si on utilise COUNT, on doit également utiliser GROUP BY
+-- COUNT compte le nombre d'employe 
+
+-- SELECT departement 
+-- FROM employe
+-- GROUP BY departement 
+
+-- SELECT nom, prenom
+-- FROM employe
+-- WHERE salaire = (SELECT MAX(salaire) FROM employe)
+
+
+
+-- requete éronné 
+-- SELECT nom, SUM(salaire)
+-- FROM employe
+-- WHERE ville IN ('Montréal', 'Québec');
+
+-- SELECT departement,
+-- COUNT(salaire),
+-- MIN(salaire),
+-- MAX(salaire),
+-- SUM(salaire),
+-- AVG(salaire)
+-- FROM employe
+-- WHERE departement IS NOT NULL
+-- GROUP BY departement;
+
+-- SELECT departement, COUNT(*)
+-- FROM employe
+-- WHERE salaire >= 30
+-- GROUP BY departement
+-- HAVING COUNT(*) > 5;
+
+-- SELECT departement, COUNT(*)
+-- FROM employe
+-- WHERE salaire >= 25 AND departement in(
+-- 	Select departement
+-- 	GROUP BY departement 
+-- 	HAVING COUNT(*) >= 4)
+-- 	GROUP BY departement
+
+
+-- SELECT * FROM employe, departement -- fusion des deux tables/ produit cartésien ou concept de jointure 
+
+-- SELECT *
+-- FROM employe,
+-- departement
+-- WHERE departement.superviseur =
+-- employe.nas -- verifier les colones des tables
+-- ;
+
+
+-- SELECT employe.nom, departement.nom
+-- FROM employe 
+-- JOIN departement 
+-- ON employe.nas = departement.superviseur -- dans les deux tables il y a la colone nom donc employe.nom
+
+-- SELECT *  
+-- FROM employe
+-- INNER JOIN departement on employe.departement = departement.id
+
+--  SELECT *  
+-- FROM employe
+-- LEFT OUTER JOIN departement on employe.ville = departement.ville
+
+
+

@@ -1,0 +1,112 @@
+-- 10.1
+-- SELECT AVG(salaire)
+-- FROM employe
+
+--10.2
+-- SELECT AVG(salaire), departement
+-- FROM employe
+-- GROUP BY departement
+
+--10.3
+-- SELECT AVG(salaire), departement, COUNT(*)
+-- FROM employe
+-- GROUP BY departement
+-- HAVING COUNT(*) > 1
+
+--10.4
+-- SELECT AVG(salaire), departement
+-- FROM employe
+-- GROUP BY departement 
+-- HAVING MAX(salaire) > 30.00
+
+
+--10.5
+-- SELECT departement , AVG(salaire)
+-- FROM employe
+-- WHERE departement = (
+-- 	select id
+-- 	FROM departement
+-- 	WHERE nom = 'Ventes')
+-- GROUP BY departement 
+
+
+--10.6
+-- SELECT COUNT(*), AVG(salaire), departement
+-- FROM employe
+-- WHERE genre = 'f'
+-- GROUP BY departement
+
+
+--10.7
+-- SELECT COUNT(*), AVG(salaire), departement
+-- FROM employe
+-- WHERE genre = 'f'
+-- GROUP BY departement
+-- ORDER BY AVG(salaire)
+
+--10.8
+-- SELECT 'Femmes' as Genre,COUNT(genre) as Nombre, AVG(salaire) as Moyenne_salariale
+-- FROM employe
+-- WHERE genre = 'f'
+-- UNION
+-- SELECT  'Hommes' as Genre,COUNT(genre)  as Nombre, AVG(salaire) as Moyenne_salariale
+-- FROM employe
+-- WHERE genre = 'h'
+
+
+--10.9
+-- SELECT COUNT(*)
+-- FROM departement
+
+
+--10.10
+-- SELECT AVG(EXTRACT(YEAR FROM now())- EXTRACT(YEAR FROM date_embauche)), departement
+-- FROM employe
+-- GROUP BY departement
+
+
+--10.11
+-- SELECT 
+-- 	CASE
+-- 		WHEN genre = 'f' then 'Femmes'
+-- 		WHEN genre = 'h' then 'Hommes'
+-- 	END AS genre,
+-- 	 AVG(EXTRACT(YEAR FROM now()) - EXTRACT(YEAR FROM date_embauche)) as annee
+-- FROM employe
+-- GROUP BY genre
+
+
+--10.12
+-- SELECT departement, COUNT(*)
+-- FROM employe
+-- GROUP BY departement
+
+--10.13
+-- SELECT AVG(salaire),MAX(salaire), Min(salaire), departement
+-- FROM employe
+-- GROUP BY departement
+-- HAVING COUNT(*) > 1
+
+--10.14
+-- SELECT departement, genre, COUNT(*)
+-- FROM employe
+-- WHERE commission is NULL
+-- GROUP BY departement , genre
+	
+--10.15
+-- SELECT departement, 
+-- ((salaire * 32) * 52 ) + (commission * 12) + (((salaire * 32) * 52 ) * 0.25 ) + ((commission * 12) * 0.10) as Revenu
+-- FROM employe 
+-- GROUP BY departement
+-- HAVING ((salaire * 32) * 52 ) + (commission * 12) + (((salaire * 32) * 52 ) * 0.25 ) + ((commission * 12) * 0.10) >= 50000.00
+
+
+-- --10.16
+-- SELECT  COUNT(superviseur)
+-- FROM employe
+-- GROUP BY superviseur
+
+
+
+
+

@@ -41,6 +41,9 @@
 
 -- ALTER TABLE employe ADD CONSTRAINT fk_emp_sup FOREIGN KEY (superviseur) REFERENCES employe(nas)
 
+--8.3
+ ------------------------------------------------
+
 -- Create Table etudiant(
 -- 	id				Numeric(4)		Not Null,
 -- 	nom				Varchar(64) 	Not Null,
@@ -78,6 +81,72 @@
 
 -- ALTER TABLE etudiant ADD CONSTRAINT fk_etu_pro FOREIGN KEY (programme) REFERENCES programme(id)
 -- ALTER TABLE programeme ADD CONSTRAINT fk_pro_depart FOREIGN KEY (departement) REFERENCES departement(id)
+
+
+ --8.4
+ ------------------------------------------------
+ Create Table etudiant(
+	id				Numeric(4)		Not Null,
+	nom				Varchar(64) 	Not Null,
+	prenom			Varchar(64) 	Not Null,
+	code_perm		Char(12)		Not Null,
+	courriel		Varchar(64),
+	programme 	 	NUMERIC(2)		NOT Null,
+	date_inscr		Date,
+	moyenne			NUMERIC(5,2)	NOT NULL,
+	courriel_etu	VARCHAR
+	
+	CONSTRAINT pk_etu PRIMARY KEY (id),
+	CONSTRAINT uc_etu_code_perm UNIQUE (code_perm),
+	CONSTRAINT uc_etu_cour UNIQUE (courriel),
+	CONSTRAINT ck_etu_date_inscr CHECK(date_inscr BETWEEN '2010-01-01' AND '2019-12-31'),
+	CONSTRAINT ck_etu_moy	CHECK(moyenne BETWEEN 0.00 AND 100.00)
+)
+
+Create Table programme(
+	id				Numeric(2),
+	nom				Varchar(32) NOT Null,
+	sigle			Char(3)		NOT null,
+	departement		NUMERIC(2)	NOT Null,
+	representant	NUMERIC(4)
+	
+	CONSTRAINT pk_pro PRIMARY KEY (id),
+	CONSTRAINT uc_pro_nom UNIQUE (nom),
+	CONSTRAINT uc_pro_sigle UNIQUE (sigle)
+
+	
+)
+
+Create Table departement(
+	id		Numeric(2),
+	nom		Varchar(32) 	Not Null 
+
+	CONSTRAINT PK_depar_id PRIMARY KEY (id),
+	CONSTRAINT uc_depar_nom UNIQUE (nom)
+)
+ALTER TABLE etudiant ADD CONSTRAINT fk_etu_pro FOREIGN KEY (programme) REFERENCES programme(id)
+ALTER TABLE programeme ADD CONSTRAINT fk_pro_depart FOREIGN KEY (departement) REFERENCES departement(id)
+
+
+--8.5
+---------------------------------------------
+CREATE TABLE adresse(
+	id				NUMERIC(2)		NOT NULL,
+	no_civique		INTEGER			NOT NULL,
+	no_appartement 	INTEGER,
+	rue				VARCHAR			NOT NULL,
+	ville			VARCHAR			NOT NULL,
+	province		VARCHAR			NOT NULL,
+	pays			VARCHAR			NOT NULL,
+	code_postal		CHAR(6)			NOT NULL
+
+	CONSTRAINT df_adre_prov DEFAULT ('Québec'),
+	CONSTRAINT df_adre_pay DEFAULT ('Canada')
+	CONSTRAINT uc_adres UNIQUE(id, no_civique,no_appartement,rue,ville,province,pays,code_postal)
+)
+
+
+
 
 	
 

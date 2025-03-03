@@ -1,0 +1,95 @@
+--11.1
+-------------------------
+-- SELECT e.nom, e.prenom, d.nom 
+-- FROM employe as e
+-- JOIN departement as d
+--  ON e.departement = d.id
+
+--11.2
+-- SELECT e.nom, e.prenom, e.nas, e.ville, d.ville, d.nom
+-- FROM employe as e
+-- JOIN departement as d
+-- ON e.departement = d.id
+
+
+--11.3
+-----------------------
+-- SELECT e.nom, e.prenom, e.nas, e.ville, d.ville, d.nom
+-- FROM employe as e
+-- JOIN departement as d
+-- ON e.departement = d.id
+-- WHERE e.ville <> d.ville
+-- ORDER BY e.nom asc, e.prenom asc, e.ville asc
+
+--11.4
+------------------------------
+-- SELECT *
+-- FROM departement
+-- JOIN employe
+-- ON employe.nas = departement.id
+
+
+
+--11.5
+----------------------------------------------
+
+--A--
+-- SELECT e1.nom, e1.prenom, e2.nom, e2.prenom
+-- FROM employe AS e1
+-- JOIN employe AS e2
+-- ON e1.superviseur = e2.nas
+-- ORDER BY e.date_embauche
+
+--B--
+-- SELECT e1.nom, e1.prenom, e2.nom, e2.prenom
+-- FROM employe AS e1
+-- RIGHT JOIN employe AS e2
+-- ON e1.superviseur = e2.nas
+-- ORDER BY e2.nom
+
+
+--C--
+-- SELECT e2.nom, e2.prenom, e1.nom, e1.prenom
+-- FROM employe AS e1
+-- JOIN employe AS e2
+-- ON e1.superviseur = e2.nas
+-- ORDER BY e2.nom
+
+--D--
+-- SELECT e2.nom, e2.prenom, e1.nom, e1.prenom
+-- FROM employe AS e1
+-- RIGHT JOIN employe AS e2
+-- ON e1.superviseur = e2.nas
+-- ORDER BY e1.nom
+
+
+--E--
+--
+--
+
+--12.1
+-------------------
+-- SELECT nom, prenom 
+-- FROM employe as emp
+-- WHERE salaire >=(
+-- 		SELECT salaire
+-- 		FROM employe AS es
+-- 		WHERE emp.superviseur = es.nas)
+
+--12.2
+-- ------------------------------
+-- SELECT nom,prenom
+-- FROM employe as emp
+-- WHERE emp.superviseur IN (
+-- 		SELECT es.nas
+-- 		FROM employe as es 
+-- 		WHERE (
+-- 			SELECT COUNT(*)
+-- 			FROM employe AS s
+-- 			WHERE s.superviseur = emp.superviseur) >= 4 )
+
+--12.3
+---------------------------------------------
+SELECT nom, prenom
+FROM employe
+

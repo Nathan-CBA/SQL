@@ -1,0 +1,35 @@
+- **DQL (Data Query Language)**
+    - Notes sur SELECT, WHERE, ORDER BY
+    - Opérateurs et fonctions
+    - Jointures et produits cartésiens
+    - Regroupement et agrégation
+    - Expressions de table commune (CTE)
+    - Requêtes imbriquées et corrélées
+    - Gestion des valeurs nulles
+- **DML (Data Manipulation Language)**
+    - INSERT pour l'insertion de données
+    - UPDATE pour la modification de données
+    - DELETE pour la suppression de données
+    - COPY pour l'importation et exportation
+- **DDL (Data Definition Language)**
+    - Types de données
+    - Contraintes d'intégrité
+    - CREATE pour la création d'objets
+    - ALTER pour la modification d'objets
+    - DROP pour la suppression d'objets
+    - Séquences et autres objets supplémentaires
+- **TCL (Transaction Control Language)**
+    - Transactions et propriétés ACID
+    - Contraintes différées
+- **PL/pgSQL (Langage procédural)**
+    - Introduction et principes de base
+    - Variables et types de données
+    - Structures de contrôle
+    - Curseurs
+    - Gestion des exceptions
+    - Procédures et fonctions
+    - Déclencheurs (triggers)
+- **Concepts fondamentaux**
+    - Formes normales et normalisation
+    - Résolution des requêtes
+    - Dépendances circulaires

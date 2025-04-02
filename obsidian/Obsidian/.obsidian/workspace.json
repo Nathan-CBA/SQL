@@ -1,0 +1,629 @@
+{
+  "main": {
+    "id": "d30db294437991a0",
+    "type": "split",
+    "children": [
+      {
+        "id": "bf198006627e2c54",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e5da50712b7728a2",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Index.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Index"
+            }
+          },
+          {
+            "id": "e69deee264dc8ffe",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Index.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Index"
+            }
+          },
+          {
+            "id": "97ace3de3d4849b7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "PL-INTRODUCTION.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "PL-INTRODUCTION"
+            }
+          },
+          {
+            "id": "f7a7efe071f89ce4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DQL-WHERE.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "DQL-WHERE"
+            }
+          },
+          {
+            "id": "39d462b77349afa4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "PL-Variables.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "PL-Variables"
+            }
+          },
+          {
+            "id": "9b116b9fd3800560",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "PL-STRUCTURE.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "PL-STRUCTURE"
+            }
+          },
+          {
+            "id": "966377e03758582d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "TCL-CONTRAINTES-DIFFEREES.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "TCL-CONTRAINTES-DIFFEREES"
+            }
+          },
+          {
+            "id": "544b64c1761d7b0a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "TCL-ACID.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "TCL-ACID"
+            }
+          },
+          {
+            "id": "669c0d2019bdf1cb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "PL-INTRODUCTION.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "PL-INTRODUCTION"
+            }
+          },
+          {
+            "id": "f03f9548703a01ee",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DDL-Alter.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "DDL-Alter"
+            }
+          },
+          {
+            "id": "431f814dfcd28381",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DDL-Drop.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "DDL-Drop"
+            }
+          },
+          {
+            "id": "45615affa5ae3df7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DDL-Alter.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "DDL-Alter"
+            }
+          },
+          {
+            "id": "7dc433e8f4e77473",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DDL-Create.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "DDL-Create"
+            }
+          },
+          {
+            "id": "12caaad550114901",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DDL-Alter.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "DDL-Alter"
+            }
+          },
+          {
+            "id": "297a390ccd62ae4a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Index.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Index"
+            }
+          },
+          {
+            "id": "2d4c47c05e139134",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "SQL/DQL.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "DQL"
+            }
+          },
+          {
+            "id": "38e5611e2363a3e5",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DQL-WHERE.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "DQL-WHERE"
+            }
+          },
+          {
+            "id": "07d0348427fa97f0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DQL-Jointures.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "DQL-Jointures"
+            }
+          },
+          {
+            "id": "5738b2f800e8bac1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DQL-GROUP-BY.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "DQL-GROUP-BY"
+            }
+          },
+          {
+            "id": "c8ab486df886c35d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DQL-OPERATEURS.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "DQL-OPERATEURS"
+            }
+          },
+          {
+            "id": "560af0a4188f364f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DQL-CTE.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "DQL-CTE"
+            }
+          },
+          {
+            "id": "10caf1fe7f96607b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DQL-REQUETES-IMBRIQUEES.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "DQL-REQUETES-IMBRIQUEES"
+            }
+          },
+          {
+            "id": "e2c49ff01eac79e6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DML-INSERT.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "DML-INSERT"
+            }
+          },
+          {
+            "id": "22bc5f117f774dcb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DML-Update.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "DML-Update"
+            }
+          },
+          {
+            "id": "b5990da4f3d3b2b0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DML-Delete.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "DML-Delete"
+            }
+          },
+          {
+            "id": "534c5a0e5cd188fd",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DML-COPY.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "DML-COPY"
+            }
+          },
+          {
+            "id": "7b66b58b00e37f76",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DDL-TYPES.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "DDL-TYPES"
+            }
+          },
+          {
+            "id": "da3833decf06b2bd",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DDL-Contraintes.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "DDL-Contraintes"
+            }
+          },
+          {
+            "id": "5e9b32bd4d5e3229",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DDL-Create.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "DDL-Create"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "dfb83b3e0dacb381",
+    "type": "split",
+    "children": [
+      {
+        "id": "adf3399aab5cf9d4",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "31949f48aae0465a",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "7c0758b4ff0af918",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "b8f5d97bd3d90342",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "643a8737980d0769",
+    "type": "split",
+    "children": [
+      {
+        "id": "883c66b3e3514b54",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4a9d6f1c1d45c5c8",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Index.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Index"
+            }
+          },
+          {
+            "id": "3fd662e2f1a09211",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Index.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Index"
+            }
+          },
+          {
+            "id": "54ed91517fc97807",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "2a06d95c787c3375",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Index.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Index"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "floating": {
+    "id": "9bab4316e8fe11ff",
+    "type": "floating",
+    "children": [
+      {
+        "id": "6e1be07a81f7e89a",
+        "type": "window",
+        "children": [
+          {
+            "id": "e0566248ef5a8da2",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "50efd8d5406811e1",
+                "type": "leaf",
+                "state": {
+                  "type": "graph",
+                  "state": {},
+                  "icon": "lucide-git-fork",
+                  "title": "Graph view"
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "vertical",
+        "x": 2085,
+        "y": 112,
+        "width": 680,
+        "height": 760,
+        "maximize": false,
+        "zoom": 0
+      }
+    ]
+  },
+  "active": "e69deee264dc8ffe",
+  "lastOpenFiles": [
+    "PL-EXCEPTIONS.md",
+    "Index.md",
+    "PL-DECLENCHEURS.md",
+    "PL-CURSEUR.md",
+    "PL-Variables.md",
+    "DEPENDANCES-CIRCULAIRES.md",
+    "RESOLUTION-REQUETE.md",
+    "FORMES-NORMALES.md",
+    "DDL-OBJETS.md",
+    "DDL-SEQUENCES.md",
+    "DDL-TYPES.md",
+    "DML-COPY.md",
+    "DML-Delete.md",
+    "DQL-CTE.md",
+    "DQL-GROUP-BY.md",
+    "DQL-WHERE.md",
+    "DQL-ORDER BY, LIMIT et OFFSET.md",
+    "DQL-REQUETES-IMBRIQUEES.md",
+    "DQL-OPERATEURS.md",
+    "TCL-CONTRAINTES-DIFFEREES.md",
+    "TCL-ACID.md",
+    "PL-STRUCTURE.md",
+    "PL-INTRODUCTION.md",
+    "TCL-Contraintes.md",
+    "DML-INSERT.md",
+    "DQL-SELECT.md",
+    "SQL"
+  ]
+}

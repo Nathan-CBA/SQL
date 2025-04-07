@@ -1,0 +1,39 @@
+-------------DOMAIN
+DROP TABLE test_1 CASCADE
+DROP DOMAIN postal_code
+
+CREATE DOMAIN postal_code AS TEXT 
+MOT NULL
+CHECK (VALUE ~*'[A-Z][0-9][A-Z][0-9][A-Z][0-9]$')
+
+CREATE TABLE text_1{
+	id	SERIAL,
+	code_postal postal_code
+};
+
+INSERT INTO test_1 VALUES(DEFAULT, 'H3J2M2')
+
+
+DROP TABLE test_1 CASCADE
+-- DROP DOMAIN ip_address
+
+-- CREATE DOMAIN ip_address AS TEXT 
+-- 	NOT NULL
+-- 	CONSTRAINT ip_ck CHECK (VALUE ~*'25[0-5]2[0-4]\d | 1\d$')
+
+-- CREATE TABLE text_2{
+-- 	id	SERIAL,
+-- 	ip ip_address
+-- };
+
+
+-------FIBONACCI---------------
+WITH RECURSIVE fibo(n, fib, fib_prev) AS (
+-- 	SELECT 0 AS n, 1 AS fib  , 1 AS fib
+-- 	UNION ALL
+-- 	SELECT n+1, fib + fib_prev, fib
+-- 	FROM fibo
+-- 	WHERE n < 10
+-- )
+-- SELECT n, fib, fib_prev
+-- FROM fibo

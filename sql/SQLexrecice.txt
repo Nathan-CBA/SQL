@@ -37,3 +37,98 @@ WITH RECURSIVE fibo(n, fib, fib_prev) AS (
 -- )
 -- SELECT n, fib, fib_prev
 -- FROM fibo
+
+---------recursivité---------
+-- WITH RECURSIVE suite_somme(n, somme ) AS (
+-- SELECT 1 AS n, 1 AS somme
+-- UNION ALL
+-- SELECT n + 1, somme + (n + 1)
+-- FROM suite_somme
+-- WHERE n < 5
+-- )
+
+-- SELECT n, somme 
+-- FROM suite_somme
+
+----- les employés travaillent dans le departement de leur ville 
+-- UPDATE employe AS emp
+-- 	SET emp.dept_id = dept.id
+-- 	FROM departement AS dept
+-- 	WHERE emp.ciyt = dept.city
+
+
+------ on veut que l'employe travaille dans le meme departement que leur superviseur 
+-- UPDATE employe  
+	SET departement = sup.departement
+	FROM employe as sup
+	WHERE  employe.superviseur = sup.nas;
+--------- les colonnes departements seront null vu que le departement de 111 est null
+
+
+
+SELECT random() -- gérérer nombre aléatoire
+
+
+--------- creation d'une table aléatoire
+-- CREATE TEMP TABLE test (
+-- 	valeur1 INTEGER, 
+-- 	valeur2 DOUBLE PRECISION, 
+-- 	valeur3 DOUBLE PRECISION
+-- )
+
+-- DROP TABLE test
+
+-- WITH new_data AS (
+-- SELECT generate_series(1,10) AS num_serie, random() AS num_alea
+-- )
+-- INSERT INTO test (valeur1, valeur2, valeur3)
+-- SELECT num_serie, num_alea, num_serie + num_alea FROM new_data;
+
+SELECT * FROM test
+
+
+----------update salaire table emplye 
+-- WITH updated_salaries AS (
+--  SELECT nas, salaire * 1.25 AS new_salary
+--  FROM employe
+--  WHERE departement = 'ventes'
+-- )
+-- UPDATE employe
+-- SET salaire = new_salary
+-- FROM updated_salaries
+-- WHERE employe.nas = updated_salaries.nas;
+
+
+
+---------modification d'une table ayant un foreign key grace a une table temporaire(le temps d'une requete)
+-- WITH updated_salaries AS (
+--  SELECT nas, salaire * 1.25 AS new_salary
+--  FROM employe 
+--  WHERE departement = (
+--  	SELECT id
+--  	FROM departement
+--  	WHERE nom = 'Ventes')
+-- )
+-- UPDATE employe
+-- SET salaire = new_salary
+-- FROM updated_salaries
+-- WHERE employe.nas = updated_salaries.nas;
+
+
+
+---------------- import csv
+
+COPY employe FROM '/temp/import_csv_base.csv'
+WITH (
+ FORMAT CSV,
+ HEADER TRUE,
+ DELIMITER ',',
+ ENCODING 'UTF8'
+);
+
+SELECT * FROM employe
+
+
+
+
+

@@ -107,3 +107,5 @@ LEFT JOIN photos p ON c.id = p.categorie_id
 LEFT JOIN likes l ON p.id = l.photo_id
 GROUP BY c.nom
 ORDER BY COUNT(l.photo_id) DESC
+
+LOL

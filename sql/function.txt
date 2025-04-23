@@ -1,0 +1,85 @@
+-- select *
+-- from utilisateur
+
+-- SELECT * FROM utilisateur;
+
+-- -- DROP FUNCTION get_all_emails();
+
+-- CREATE OR REPLACE FUNCTION get_all_emails()
+-- RETURNS TEXT
+-- AS $bloc$
+-- DECLARE 
+--     cur CURSOR FOR
+--         SELECT courriel FROM utilisateur;	
+--     rec utilisateur.courriel%TYPE;
+--     chaine TEXT := ''; -- walrus operator
+-- BEGIN
+--     OPEN cur;
+--     LOOP
+--         FETCH cur INTO rec;
+--         EXIT WHEN NOT FOUND;
+--         chaine := chaine || rec;
+--         chaine := chaine || ';';
+--     END LOOP;
+--     CLOSE cur;
+--     RETURN chaine;
+-- END $bloc$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION get_all_emails_by_genre(p_genre CHAR(1))
+ RETURNS TEXT
+AS $bloc$
+DECLARE 
+    cur CURSOR FOR
+        SELECT * FROM utilisateur;	
+    rec utilisateur%ROWTYPE;
+    chaine TEXT := ''; -- walrus operator
+BEGIN
+	OPEN cur;
+	LOOP
+		FETCH cur INTO rec;
+		EXIT WHEN NOT FOUND;
+		IF (p_genre = rec.genre) THEN
+		chaine := chaine || rec.courriel || ';' || CHR(13) || CHR(10);
+		END IF;
+	END LOOP;
+    CLOSE cur;
+    RETURN chaine;
+END $bloc$ LANGUAGE plpgsql;
+
+SELECT get_all_emails_by_genre('h')
+
+
+
+
+
+
+
+CREATE OR REPLACE FUNCTION get_all_emails_by_genree(p_genre CHAR(1))
+ RETURNS TEXT
+AS $bloc$
+DECLARE 
+    cur CURSOR FOR
+        SELECT * FROM utilisateur;	
+    rec utilisateur%ROWTYPE;
+    chaine TEXT := ''; -- walrus operator
+BEGIN	
+	IF p_genre <> 'h' and p_genre <> 'f' and p_genre <> 'n' THEN
+		RAISE EXCEPTION 'LE GENRE SPÉCIFIÉ EST INVALIDE', p_genre;
+	END IF;
+		
+	OPEN cur;
+	LOOP
+		FETCH cur INTO rec;
+		EXIT WHEN NOT FOUND;
+		IF rec.genre = p_genre THEN 
+			chaine := chaine || rec.courriel || ';' || CHR(13) || CHR(10);
+		END IF
+	END LOOP;
+    CLOSE cur;
+	
+	IF LENGTH(chaine) > 0 THEN
+		chaine := substring(chaine, 1, length(chaine) - 1);
+	END IF
+    RETURN chaine;
+END $bloc$ LANGUAGE plpgsql;
+		

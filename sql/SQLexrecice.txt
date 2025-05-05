@@ -87,7 +87,7 @@ SELECT random() -- gérérer nombre aléatoire
 SELECT * FROM test
 
 
-----------update salaire table emplye 
+----------update salaire table employe 
 -- WITH updated_salaries AS (
 --  SELECT nas, salaire * 1.25 AS new_salary
 --  FROM employe
@@ -127,6 +127,10 @@ WITH (
 );
 
 SELECT * FROM employe
+
+
+
+----- requête préparé 
 
 
 

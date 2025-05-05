@@ -1,0 +1,111 @@
+----------------1
+-- Select u.prenom, u.nom 
+-- FROM utilisateurs u
+-- LEFT JOIN likes l 
+-- ON u.id = l.utilisateur_id
+-- WHERE l.utilisateur_id IS NULL
+
+-- SELECT prenom, nom
+-- FROM utilisateurs
+-- WHERE id not in(
+-- 	SELECT utilisateur_id
+-- 	FROM likes
+-- )
+
+
+------------------2
+-- SELECT prenom, nom 
+-- FROM utilisateurs
+-- WHERE id in(
+-- 	SELECT photographe
+-- 	FROM photos
+-- 	WHERE categorie_id in (
+-- 		SELECT id
+-- 		FROM categories
+-- 		WHERE nom = 'Portrait'
+-- 	)
+-- )
+
+-- SELECT u.nom, u.prenom
+-- FROM utilisateurs u
+-- JOIN photos p ON u.id = p.photographe
+-- JOIN categories c ON p.categorie_id = c.id
+-- WHERE c.nom = 'Portrait'
+
+------------------3
+-- SELECT p.url, COALESCE(c.nom, 'aucun') AS categorie
+-- FROM photos p
+-- LEFT JOIN categories c ON p.categorie_id = c.id;
+
+
+--------------4
+-- SELECT p.url, COUNT(l.photo_id)
+-- FROM photos p
+-- JOIN LIKES l
+-- ON p.id = l.photo_id
+-- GROUP BY p.url
+
+--------------5
+-- SELECT u.nom, u.prenom, COUNT(p.photographe)
+-- FROM utilisateurs u 
+-- JOIN photos p 
+-- ON u.id = p.photographe
+-- GROUP BY u.nom, u.prenom
+-- HAVING COUNT(p.photographe) > 2
+
+
+----------------6
+-- SELECT p.url, p.id, COUNT(l.photo_id)
+-- FROM photos p 
+-- LEFT JOIN likes l 
+-- ON p.id = l.photo_id
+-- GROUP BY p.url, p.id
+-- ORDER BY COUNT(l.photo_id) DESC
+
+
+----------------7
+-- SELECT url
+-- FROM photos
+-- WHERE id NOT IN(
+-- 	SELECT photo_id
+-- 	FROM likes
+-- )
+
+-- SELECT p.url
+-- FROM photos p
+-- LEFT JOIN likes l
+-- ON p.id = l.photo_id
+-- WHERE l.photo_id IS NULL
+
+
+-----------8
+-- SELECT c.nom, COUNT(p.categorie_id)
+-- FROM categories c
+-- LEFT JOIN photos p 
+-- ON c.id = p.categorie_id
+-- GROUP BY c.nom
+-- ORDER BY COUNT(p.categorie_id) DESC
+
+--------9
+-- SELECT u.nom, u.prenom, COUNT(l.photo_id)
+-- FROM likes l
+-- JOIN photos p 
+-- ON l.photo_id = p.id
+-- JOIN utilisateurs u ON p.photographe = u.id 
+-- GROUP BY u.nom, u.prenom
+
+-- SELECT u.nom, u.prenom, COUNT(l.photo_id) AS total_likes
+-- FROM utilisateurs u
+-- JOIN photos p ON u.id = p.photographe
+-- LEFT JOIN likes l ON p.id = l.photo_id
+-- GROUP BY u.nom, u.prenom
+
+-----------10
+SELECT c.nom, COUNT(l.photo_id)
+FROM categories c
+LEFT JOIN photos p ON c.id = p.categorie_id
+LEFT JOIN likes l ON p.id = l.photo_id
+GROUP BY c.nom
+ORDER BY COUNT(l.photo_id) DESC
+
+LOL

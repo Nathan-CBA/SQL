@@ -1,0 +1,59 @@
+CREATE OR REPLACE PROCEDURE create_stats(mode INT DEFAULT 4)
+LANGUAGE PLPGSQL
+AS $$
+BEGIN
+DROP TABLE IF EXISTS stats_employe;
+CREATE TABLE stats_employe(
+id SERIAL PRIMARY KEY,
+quand TIMESTAMP NOT NULL,
+qui TEXT NOT NULL,
+nombre INT NOT NULL,
+salaire_min NUMERIC(7,2) NULL,
+salaire_moy NUMERIC(7,2) NULL,
+salaire_max NUMERIC(7,2) NULL
+);
+ CALL snapshot_stats(mode); -- cette procédure sera créée par la suite
+END$$;
+
+call create_stats();
+
+
+CREATE OR REPLACE PROCEDURE snapshot_stats(mode INT DEFAULT 4)
+LANGUAGE PLPGSQL
+AS $$
+DECLARE
+	pattern TEXT := '^[fhx]';
+BEGIN
+	CASE mode -- mode =>
+		WHEN 0 THEN -- 0 => femmes
+			pattern := '^[f]';
+		WHEN 1 THEN -- 1 => hommes
+			pattern := '^[h]';
+		WHEN 2 THEN -- 2 => non binaires
+			pattern := '^[x]';
+		WHEN 3 THEN -- 3 => femmes et hommes
+			pattern := '^[fh]';
+		WHEN 4 THEN -- 4 => tous les genres
+			pattern := '^[fhx]';
+	END CASE;
+INSERT INTO stats_employe(quand, qui, nombre, salaire_min, salaire_moy, salaire_max)
+SELECT CURRENT_TIMESTAMP, pattern, COUNT(*), MIN(salaire), AVG(salaire), MAX(salaire)
+FROM employe
+WHERE genre ~ pattern;
+END$$;
+
+
+¸¸CREATE OR REPLACE PROCEDURE snapshot_all_stats()
+LANGUAGE PLPGSQL
+AS $$
+BEGIN
+FOR i IN 0..4 BY 1 LOOP
+CALL snapshot_stats(i);
+END LOOP;
+END$$;
+
+CALL create_stats();
+CALL snapshot_stats(0);
+CALL snapshot_all_stats();
+
+SELECT * FROM stats_employe;

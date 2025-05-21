@@ -153,12 +153,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Fonction.md",
+                "file": "Fonction-Procedure.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Fonction"
+              "title": "Fonction-Procedure"
             }
           },
           {
@@ -181,16 +181,44 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Fonction.md",
+                "file": "Trigger.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Fonction"
+              "title": "Trigger"
+            }
+          },
+          {
+            "id": "b62f6a1867feda0f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Exemple-produit.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Exemple-produit"
+            }
+          },
+          {
+            "id": "1a7b304176900872",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Fonction-Procedure.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Fonction-Procedure"
             }
           }
         ],
-        "currentTab": 12
+        "currentTab": 14
       }
     ],
     "direction": "vertical"
@@ -263,7 +291,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Fonction.md",
+                "file": "Fonction-Procedure.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -273,7 +301,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Rétrolien pour Fonction"
+              "title": "Rétrolien pour Fonction-Procedure"
             }
           },
           {
@@ -282,12 +310,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Fonction.md",
+                "file": "Fonction-Procedure.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Liens sortants de Fonction"
+              "title": "Liens sortants de Fonction-Procedure"
             }
           },
           {
@@ -311,13 +339,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Fonction.md",
+                "file": "Fonction-Procedure.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Plan de Fonction"
+              "title": "Plan de Fonction-Procedure"
             }
           }
         ]
@@ -337,21 +365,24 @@
       "command-palette:Ouvrir la palette de commandes": false
     }
   },
-  "active": "de77413c3483e155",
+  "active": "1a7b304176900872",
   "lastOpenFiles": [
-    "Sans titre.md",
+    "Exemple-train.md",
+    "Exemple-produit.md",
+    "Fonction-Procedure.md",
     "Trigger.md",
-    "Fonction.md",
-    "Concaténation.md",
-    "Agrégation.md",
-    "Jointure.md",
-    "Date.md",
-    "Insert-Update-Delete.md",
-    "ENUM.md",
     "Exemple-1.md",
+    "fonctions_sql_de_base.md",
     "Deferable.md",
     "dependance_circulaire.md",
+    "Insert-Update-Delete.md",
+    "Concaténation.md",
     "Bienvenue.md",
+    "Agrégation.md",
+    "Sans titre.md",
+    "Jointure.md",
+    "Date.md",
+    "ENUM.md",
     "Ordre logique.md",
     "lol.md.txt",
     "lol.mrkd.txt",

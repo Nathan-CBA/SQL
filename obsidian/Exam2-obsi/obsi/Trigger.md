@@ -129,7 +129,7 @@ END;`
 
 ---
 
-### ✅ 2. **Boucles (loop, while, for)**
+### 2. **Boucles (loop, while, for)**
 
 Si tu veux faire un traitement sur plusieurs lignes ou vérifier une logique répétitive :
 
@@ -144,7 +144,7 @@ END;`
 
 ---
 
-### ✅ 3. **Instructions SQL dans le trigger**
+###  3. **Instructions SQL dans le trigger**
 
 Tu peux insérer, mettre à jour ou supprimer d’autres tables depuis un trigger (⚠️ avec prudence pour éviter les boucles infinies) :
 
@@ -153,13 +153,14 @@ Tu peux insérer, mettre à jour ou supprimer d’autres tables depuis un trigge
 `CREATE TRIGGER log_insert 
 AFTER
 INSERT ON employe FOR EACH ROW 
-BEGIN   INSERT INTO log_table (message, date_evenement)   
+BEGIN  
+INSERT INTO log_table (message, date_evenement)   
 VALUES ('Nouvel employé inséré', NOW());
 END;`
 
 ---
 
-### ✅ 4. **Utilisation de `EXCEPTION` pour gérer les erreurs**
+###  4. **Utilisation de `EXCEPTION` pour gérer les erreurs**
 
 Tu peux capturer et traiter les erreurs :
 
@@ -170,7 +171,7 @@ RAISE NOTICE 'Erreur : division par zéro.'; END;`
 
 ---
 
-### ✅ 5. **Appel à des fonctions**
+###  5. **Appel à des fonctions**
 
 Tu peux appeler une fonction définie ailleurs :
 
@@ -184,3 +185,141 @@ Tu peux appeler une fonction définie ailleurs :
 |Fonction dans un trigger|`PERFORM`|Idem, très courant dans les triggers|
 |Procédure en SQL direct|`CALL`|Appel d’une procédure (`CREATE PROCEDURE`)|
 |PostgreSQL < 11|`EXECUTE PROCEDURE`|Ancienne manière d’appeler une procédure|
+
+
+### Concepts clés
+
+- **Trigger** : c’est un mécanisme qui exécute automatiquement du code (souvent une fonction) lors d’un événement spécifique sur une table (INSERT, UPDATE, DELETE).
+    
+- **Fonction trigger** : fonction spéciale qui contient le code exécuté par le trigger.
+    
+- **NEW** : en `INSERT` ou `UPDATE`, représente la nouvelle ligne qui va être insérée ou modifiée.
+    
+- **OLD** : en `UPDATE` ou `DELETE`, représente l’ancienne ligne (avant modification ou suppression).
+    
+- **RETURN** : dans une fonction trigger, il faut retourner la ligne à insérer/modifier (`NEW`) ou `NULL` pour supprimer la ligne.
+    
+- **RAISE EXCEPTION** : permet de déclencher une erreur personnalisée qui stoppe l’opération.
+    
+
+---
+
+### Exemple concret
+
+**Contexte** : Sur une table `employe`, on veut vérifier avant insertion ou mise à jour que le champ `nom` n’est pas vide. Sinon, on bloque l’opération.
+
+---
+
+#### 1. Création de la fonction trigger
+
+
+
+`CREATE OR REPLACE FUNCTION verif_nom_non_vide() 
+RETURNS trigger AS 
+$ 
+BEGIN     
+-- Vérifie que le nom n'est pas NULL ni vide     
+IF NEW.nom IS NULL OR TRIM(NEW.nom) = '' THEN         
+RAISE EXCEPTION 'Le nom ne peut pas être vide';     
+END IF;      
+-- Retourne la ligne modifiée (NEW)     
+RETURN NEW; 
+END; 
+$ LANGUAGE plpgsql;`
+
+#### 2. Création du trigger lié à la table `employe`
+
+`CREATE TRIGGER verif_nom_trigger 
+BEFORE INSERT OR UPDATE ON employe 
+FOR EACH ROW
+EXECUTE FUNCTION verif_nom_non_vide();`
+
+##### Non, on ne crée pas de trigger _à l’intérieur_ d’une fonction.
+
+##### Oui, on crée une **fonction trigger** (une fonction spéciale qui sera appelée par un trigger).
+
+
+
+## Before et After
+
+### Différence entre `BEFORE` et `AFTER`
+
+|Type de trigger|Quand il s'exécute|Usage typique|
+|---|---|---|
+|**BEFORE INSERT/UPDATE/DELETE**|Avant que l'opération ne soit réellement faite dans la table|- Valider/modifier les données avant insertion ou mise à jour  <br>- Bloquer l’opération en levant une exception  <br>- Modifier la ligne insérée ou mise à jour (`RETURN NEW` ou `RETURN NULL` pour annuler)  <br>- Prévenir des erreurs avant modification|
+|**AFTER INSERT/UPDATE/DELETE**|Après que l'opération soit faite|- Actions dépendantes des données déjà modifiées  <br>- Mise à jour dans d’autres tables (audit, logs)  <br>- Déclenchement de traitements asynchrones ou notifications  <br>- Actions qui ne modifient pas directement la ligne insérée|
+
+
+
+
+### BEFORE INSERT : Valider que `nom` n’est pas vide
+
+`CREATE OR REPLACE FUNCTION verif_nom_non_vide() 
+RETURNS trigger AS $
+BEGIN     
+IF NEW.nom IS NULL OR TRIM(NEW.nom) = '' THEN       
+RAISE EXCEPTION 'Le nom ne peut pas être vide';    
+END IF;   
+RETURN NEW; 
+END; $ 
+LANGUAGE plpgsql; 
+
+CREATE TRIGGER trg_verif_nom 
+BEFORE INSERT ON employe
+FOR EACH ROW EXECUTE FUNCTION verif_nom_non_vide();`
+
+---
+
+### 2. AFTER INSERT : Enregistrer une action dans une table d’historique
+
+
+
+CREATE OR REPLACE FUNCTION log_insertion_employe()
+RETURNS trigger AS $
+BEGIN
+    INSERT INTO historique (id_employe, action, date_action)
+    VALUES (NEW.id, 'Insertion', NOW());
+    RETURN NEW;
+END;
+$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_log_insertion
+AFTER INSERT ON employe
+FOR EACH ROW
+EXECUTE FUNCTION log_insertion_employe();
+
+
+---
+
+### 3. BEFORE UPDATE : Mettre à jour une date de modification
+
+CREATE OR REPLACE FUNCTION maj_date_modif()
+RETURNS trigger AS $
+BEGIN
+    NEW.date_modif := NOW();
+    RETURN NEW;
+END;
+$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_maj_date_modif
+BEFORE UPDATE ON employe
+FOR EACH ROW
+EXECUTE FUNCTION maj_date_modif();
+
+
+---
+
+### 4. AFTER DELETE : Supprimer des données liées (suppression manuelle en cascade)
+
+CREATE OR REPLACE FUNCTION suppr_commandes_client()
+RETURNS trigger AS $
+BEGIN
+    DELETE FROM commandes WHERE client_id = OLD.id;
+    RETURN OLD;
+END;
+$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_suppr_commandes
+AFTER DELETE ON client
+FOR EACH ROW
+EXECUTE FUNCTION suppr_commandes_client();

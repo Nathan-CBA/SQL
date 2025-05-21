@@ -4,7 +4,7 @@
 
 ##  Pourquoi ?
 
-Les contraintes marquées `DEFERRABLE INITIALLY DEFERRED` ne sont **vérifiées qu'à la fin de la transaction**.  
+Les contraintes marquées `DEFERRABLE INITIALLY DEFERRED` ne sont **vérifiées qu'à la fin de la transaction**. Transaction -> [[Insert-Update-Delete]]
 Donc si tu n’utilises pas explicitement une transaction, alors :
 
 - Chaque `INSERT` est traité comme une **transaction implicite individuelle**.
@@ -101,7 +101,8 @@ VALUES (10, 'Les Misérables', 1);  COMMIT;`
 ##  Solution : retarder les contraintes dans la transaction
 
 `BEGIN;  
--- On retarde la vérification des contraintes DEFERRABLE SET CONSTRAINTS ALL DEFERRED;  
+-- On retarde la vérification des contraintes 
+DEFERRABLE SET CONSTRAINTS ALL DEFERRED;  
 INSERT INTO auteur (id, nom, livre_prefere) 
 VALUES (1, 'Victor Hugo', 10); 
 INSERT INTO livre (id, titre, auteur_id)
